@@ -1,5 +1,6 @@
 import csv
 import random
+import pyfiglet
 
 # ---------- Load Cards ----------
 
@@ -57,6 +58,15 @@ def determine_winner(player_value, comput_value, order=1):
             return "player"
         else:
             return "computer"
+def categoryrank(tcard,category):
+    metric= [float(card[mapping_dict[category]]) for card in all_cards]
+    if category in ['M',"C","W"]:
+        metricsorted=sorted(metric, reverse=True)
+    else:
+        metricsorted=sorted(metric )
+    rank=metricsorted.index(float(tcard[mapping_dict[category]])) +1
+    return rank
+
 
 
 # ---------- Main Game ----------
@@ -86,6 +96,7 @@ while not game_over:
         choice = input("Choice: ").upper()
 
         key_requested = mapping_dict[choice]
+        print('the rank of your card in that category is ', categoryrank(player,choice))
 
         chance = "computer"
 
@@ -102,10 +113,11 @@ while not game_over:
 
     # Temper → lower wins
     if key_requested == "Temper":
-        winner = determine_winner(metric_player, metric_comput, 0)
+        winner =pyfiglet.figlet_format( determine_winner(metric_player, metric_comput, 0),font='digital')
 
     else:
-        winner = determine_winner(metric_player, metric_comput)
+        winner = pyfiglet.figlet_format(determine_winner(metric_player, metric_comput),font='digital' )
+
 
     print()
     print("Player", key_requested, "=", metric_player)
