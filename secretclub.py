@@ -97,3 +97,11 @@ def deep_validate():
     It randomly succeeds or raises ValueError.
     """
     pass
+
+
+print("Welcome to the comrades' club ","\n","Here we will teach you how to fight with the elements, shall you recieve a blessing from the archons of the god king",'Start you blessing validation')
+print(' us these functions to start your blessing','\n'
+      ,'short_form(names and adjectives about urself)','\n'
+      ,'name_strength(your full name with addons and prefix with suffix)',"\n"
+      ,'validate(short_form and name_strength)','\n'
+      ,'then deep_validate()')
